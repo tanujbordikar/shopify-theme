@@ -2,7 +2,7 @@
 FROM node:alpine
 
 # Set the working directory inside the container
-WORKDIR /usr/src/app
+WORKDIR /
 
 # Copy the Shopify theme files into the container
 COPY . .
