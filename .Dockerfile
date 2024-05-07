@@ -1,7 +1,7 @@
 # Use a base image with Ruby and necessary build tools installed
-FROM ruby:2.7
+FROM ruby:2.7-slim
 
-# Install dependencies required by Shopify CLI
+# Install dependencies required by Shopify CLI, Node.js, and update Node.js to version 20
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     apt-transport-https \
@@ -9,18 +9,18 @@ RUN apt-get update && \
     curl \
     gnupg \
     lsb-release \
-    unzip
+    unzip \
+    && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install Shopify CLI
-RUN curl -sSL https://shopify.github.io/themekit/scripts/install.py | python
+# Install Shopify CLI globally using npm
+RUN npm install -g @shopify/cli
 
-# Install Ruby DevKit
-RUN curl -O https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.2.4-1/rubyinstaller-devkit-3.2.4-1-x64.exe && \
-    ruby rubyinstaller-devkit-3.2.4-1-x64.exe
-
-# Set environment variables for Ruby DevKit
-ENV DEVKIT_HOME=C:/Ruby27-x64/devkit
-ENV PATH="$DEVKIT_HOME:$PATH"
+# Set environment variables for Shopify CLI authentication
+ENV SHOPIFY_API_KEY=""
+ENV SHOPIFY_PASSWORD=""
 
 # Set the working directory inside the container
 WORKDIR /usr/src/app
@@ -28,11 +28,9 @@ WORKDIR /usr/src/app
 # Copy the Shopify theme files into the container
 COPY . .
 
-# Install any dependencies required by your theme (if applicable)
-RUN npm install
-
 # Expose any ports used by the Shopify theme server (if applicable)
 EXPOSE 8080
 
-# Specify the command to start the Shopify theme server
-CMD ["shopify", "theme", "serve"]
+# Run Shopify CLI command (replace with your desired command)
+CMD ["shopify", "login", "--store=\"demo-dear-digital\""]
+CMD ["shopify", "theme", "dev", "--store=demo-dear-digital"]
