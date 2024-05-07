@@ -1,4 +1,4 @@
-name: Shopify Theme Management
+name: Shopify Theme Preview
 
 on:
   pull_request:
