@@ -1,5 +1,6 @@
 name: 'Deploy Preview'
-on: [pull_request]
+on:
+  pull_request:
 
 jobs:
   deploy:
@@ -11,7 +12,8 @@ jobs:
       - name: 'Deploy Theme'
         uses: wyugen/shopify-theme-action@v0.3
         with:
-          SHOPIFY_STORE: ${{secrets.SHOPIFY_STORE_URL}}
-          SHOPIFY_APP_PW: ${{secrets.SHOPIFY_PASSWORD}}
-          SHOPIFY_API_KEY: ${{secrets.SHOPIFY_API_KEY}}
-          github-token: ${{secrets.GIT_HUB_TOKEN}}
+          SHOPIFY_STORE: ${{ secrets.SHOPIFY_STORE_URL }}
+          SHOPIFY_APP_PW: ${{ secrets.SHOPIFY_PASSWORD }}
+          SHOPIFY_API_KEY: ${{ secrets.SHOPIFY_API_KEY }}
+          SHOPIFY_ACCESS_TOKEN: ${{ secrets.SHOPFIY_ACCESS_TOKEN }}
+          github-token: ${{ secrets.GIT_HUB_TOKEN }}
