@@ -21,3 +21,4 @@ jobs:
           SHOPIFY_API_KEY: ${{secrets.SHOPIFY_API_KEY}}
           SHOPIFY_THEME_DIRECTORY: "./dist" # TODO - this may need updating
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          
