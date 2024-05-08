@@ -11,7 +11,6 @@ jobs:
           ref: ${{ github.head_ref }}
 
       # ... steps to build Shopify theme ...demo checking
-
       - name: Shopify Theme Actions
         uses: matthew-petrie/shopify-theme-actions@1.2.2
         with:
