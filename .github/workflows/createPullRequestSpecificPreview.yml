@@ -20,4 +20,5 @@ jobs:
           SHOPIFY_API_KEY: ${{secrets.SHOPIFY_API_KEY}}
           SHOPIFY_THEME_DIRECTORY: "./dist" # TODO - this may need updating
           SHOPIFY_ALLOW_LIVE_THEME_DEPLOYMENT: true # Ensure this parameter is added and has a valid boolean value
+          SHOPIFY_THEME_ID: 116702740481 # TODO - THIS MUST BE UPDATED
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
