@@ -14,7 +14,7 @@ node_modules
 # Shopify env #
 ######################
 shopify.theme.toml
-
+.env
 
 # Gem #
 Gemfile

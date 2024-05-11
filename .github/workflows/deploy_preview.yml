@@ -17,3 +17,4 @@ jobs:
           SHOPIFY_API_KEY: ${{ secrets.SHOPIFY_API_KEY }}
           SHOPIFY_ACCESS_TOKEN: ${{ secrets.SHOPFIY_ACCESS_TOKEN }}
           github-token: ${{ secrets.GIT_HUB_TOKEN }}
+          
